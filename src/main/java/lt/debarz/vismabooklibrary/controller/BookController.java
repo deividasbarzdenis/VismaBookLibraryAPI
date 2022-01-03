@@ -111,14 +111,14 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public ResponseEntity<BookDto> updateBook(@RequestBody @Valid BookDto bookDto) {
         Book updatedBook = bookService.updateBook(BookMapper.BOOK_MAPPER.mapEntity(bookDto));
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(BookMapper.BOOK_MAPPER.mapDto(updatedBook));
     }
 
-    @PatchMapping("/patch/{id}")
+    @PatchMapping("/patch")
     public ResponseEntity<BookDto> patchBook(@RequestBody @Valid BookDto bookDto) {
         Book patchedBook = bookService.patchBook(bookDto);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -152,7 +152,7 @@ public class BookController {
         bookService.deleteReservation(id);
     }
 
-    @PatchMapping("/patch/reservation/{id}")
+    @PatchMapping("/patch/reservation")
     public ResponseEntity<ReservedDto> patchBook(@RequestBody @Valid ReservedDto reservedDto) {
         Reserved patchedReservation = bookService.patchReservation(reservedDto);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
